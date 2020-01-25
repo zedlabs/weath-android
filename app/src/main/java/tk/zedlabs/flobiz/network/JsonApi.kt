@@ -1,4 +1,4 @@
-package tk.zedlabs.flobiz
+package tk.zedlabs.flobiz.network
 
 import retrofit2.http.GET
 import tk.zedlabs.flobiz.models.CityList

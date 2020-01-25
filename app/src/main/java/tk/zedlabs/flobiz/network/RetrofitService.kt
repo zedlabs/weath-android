@@ -1,4 +1,4 @@
-package tk.zedlabs.flobiz
+package tk.zedlabs.flobiz.network
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -23,7 +23,17 @@ object RetrofitService {
         .client(client)
         .build()
 
+    private var retrofit2 : Retrofit = Retrofit.Builder()
+        .baseUrl("https://api.openweathermap.org/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(client)
+        .build()
+
    fun <S> createService(serviceClass: Class<S>): S {
         return retrofit.create(serviceClass)
+    }
+
+    fun <S> createService2(serviceClass: Class<S>): S {
+        return retrofit2.create(serviceClass)
     }
 }

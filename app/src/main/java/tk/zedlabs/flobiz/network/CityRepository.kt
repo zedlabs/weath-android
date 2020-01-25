@@ -1,4 +1,4 @@
-package tk.zedlabs.flobiz
+package tk.zedlabs.flobiz.network
 
 class CityRepository {
 
