@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">flobiz</string>
+    <string name="loading">Loading...</string>
 </resources>

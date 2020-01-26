@@ -25,12 +25,12 @@ class WeatherDetailsActivity : AppCompatActivity() {
     }
     private fun showData() {
         viewModel.data.observe(this, Observer {
-            locationTv.text = cityName
+            locationTv.text = cityName.toUpperCase()
             val main1 = it.main
-            tempratureCurrent.text = main1?.temp.toString()
+            tempratureCurrent.text = main1?.temp.toString() + "°"
             description.text = it.weather?.get(0)?.description
-            minVal.text = main1?.tempMin.toString()
-            maxVal.text = main1?.tempMax.toString()
+            minVal.text = main1?.tempMin.toString() + "°"
+            maxVal.text = main1?.tempMax.toString() + "°"
             pressureVal.text = main1?.pressure.toString()
             humidityVal.text = main1?.humidity.toString()
             windVal.text = main1?.humidity.toString()

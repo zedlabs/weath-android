@@ -1,16 +1,24 @@
 package tk.zedlabs.flobiz.ui
 
+import android.app.ActivityOptions
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.widget.RelativeLayout
+import android.widget.TextView
+import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import tk.zedlabs.flobiz.CityListAdapter
-import tk.zedlabs.flobiz.viewmodels.MainViewModel
 import tk.zedlabs.flobiz.R
 import tk.zedlabs.flobiz.models.City
+import tk.zedlabs.flobiz.viewmodels.MainViewModel
+
 
 class MainActivity : AppCompatActivity(),
     CityListAdapter.OnImageListener {
@@ -21,12 +29,26 @@ class MainActivity : AppCompatActivity(),
         val i = Intent(this, WeatherDetailsActivity::class.java)
         val cityName = viewModel.data.value?.cities?.get(position)?.name
         i.putExtra("city-name", cityName)
-        startActivity(i)
+        startActivity(i, ActivityOptions.makeSceneTransitionAnimation(this).toBundle())
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        val actionBar: ActionBar? = supportActionBar
+        val tv = TextView(applicationContext)
+        val typeface = ResourcesCompat.getFont(this, R.font.roboto_slab_light)
+        val lp = RelativeLayout.LayoutParams(
+            RelativeLayout.LayoutParams.MATCH_PARENT,  RelativeLayout.LayoutParams.WRAP_CONTENT)
+
+        tv.layoutParams = lp
+        tv.text = "Weather App"
+
+        tv.textSize = 25f
+        tv.setTextColor(Color.WHITE)
+        tv.typeface = typeface
+        actionBar?.displayOptions = ActionBar.DISPLAY_SHOW_CUSTOM
+        actionBar?.customView = tv
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
         showData()
     }
