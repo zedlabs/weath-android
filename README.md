@@ -1,4 +1,4 @@
-# flobiz-android
+# android
 ### API used - 
   * https://api.myjson.com/bins/lw9qf 
   * https://api.openweathermap.org/
