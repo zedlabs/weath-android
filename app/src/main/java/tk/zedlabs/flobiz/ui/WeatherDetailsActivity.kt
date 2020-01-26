@@ -1,5 +1,6 @@
 package tk.zedlabs.flobiz.ui
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -21,6 +22,11 @@ class WeatherDetailsActivity : AppCompatActivity() {
         val intent = intent
         cityName = intent.getStringExtra("city-name")!!
         viewModel = WeatherDetailsViewModel(cityName)
+        back_image.setOnClickListener {
+            val i = Intent(this, MainActivity::class.java)
+            i.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(i)
+        }
         showData()
     }
     private fun showData() {

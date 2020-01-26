@@ -1,10 +1,11 @@
-package tk.zedlabs.flobiz
+package tk.zedlabs.flobiz.ui
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.city_list_item.view.*
+import tk.zedlabs.flobiz.R
 import tk.zedlabs.flobiz.models.City
 
 class CityListAdapter(private val myDataset : List<City>, onImageListener : OnImageListener) : RecyclerView.Adapter<CityListAdapter.MyViewHolder>() {
@@ -25,7 +26,10 @@ class CityListAdapter(private val myDataset : List<City>, onImageListener : OnIm
     override fun onCreateViewHolder(parent: ViewGroup,viewType: Int): MyViewHolder {
         val cityCardView = LayoutInflater.from(parent.context)
             .inflate(R.layout.city_list_item, parent, false)
-        return MyViewHolder(cityCardView, mOnImageListener)
+        return MyViewHolder(
+            cityCardView,
+            mOnImageListener
+        )
     }
 
     override fun getItemCount(): Int { return myDataset.size }

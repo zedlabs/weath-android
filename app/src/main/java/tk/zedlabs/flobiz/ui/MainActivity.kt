@@ -3,7 +3,6 @@ package tk.zedlabs.flobiz.ui
 import android.app.ActivityOptions
 import android.content.Intent
 import android.graphics.Color
-import android.graphics.Typeface
 import android.os.Bundle
 import android.widget.RelativeLayout
 import android.widget.TextView
@@ -14,7 +13,6 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
-import tk.zedlabs.flobiz.CityListAdapter
 import tk.zedlabs.flobiz.R
 import tk.zedlabs.flobiz.models.City
 import tk.zedlabs.flobiz.viewmodels.MainViewModel
@@ -58,7 +56,8 @@ class MainActivity : AppCompatActivity(),
         val viewManager = LinearLayoutManager(this)
         viewModel.data.observe(this, Observer {
             cityList = it.cities!!
-            val viewAdapter = CityListAdapter(cityList, this)
+            val viewAdapter =
+                CityListAdapter(cityList, this)
             recycler_view_city.apply {
                 layoutManager = viewManager
                 adapter = viewAdapter
