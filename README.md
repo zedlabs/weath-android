@@ -5,7 +5,7 @@
 
 ### tech-stack
   * MVVM
-  * Kotlin
+  * Kotlin+coroutines
   * LiveData
   * Retrofit2
   * AAC
